@@ -2,7 +2,7 @@
 pipeline{
 	agent any
 	stages{
-	  stage('ContiniousDownload_Master'){
+	  stage('ContiniousDownload_Loans'){
 		steps{
 		    script{
 		      dclare.newGit("maven")
@@ -10,35 +10,14 @@ pipeline{
 		}
 	    }
 	    
-	    stage('Continiousbuild_Master'){
+	    stage('Continiousbuild_Loans'){
 		steps{
 		    script{
 		      dclare.newMaven()
 		    }
 		}
 	    }
-	     stage('Continioudeploy_Master'){
-		steps{
-		    script{
-		      dclare.newDeploy("SharedLib","172.31.82.1","testapp")
-		    }
-		}
-	    }
-	     stage('ContiniousTesting_Master'){
-		steps{
-		    script{
-		        dclare.newGit("FunctionalTesting_Master")
-		      dclare.runSelenium("SharedLib")
-		    }
-		}
-	    }
-	    stage('Continioudelivery_Master'){
-		steps{
-		    script{
-		      dclare.newDeploy("SharedLib","172.31.95.221","prodapp")
-		    }
-		}
-	    }
+	     
 	   
 	}
     } 
