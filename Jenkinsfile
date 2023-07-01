@@ -27,7 +27,7 @@ pipeline{
 	     stage('ContiniousTesting_Master'){
 		steps{
 		    script{
-		        dclare.newGit("FunctionalTesting_Master")
+		        dclare.newGit("FunctionalTesting")
 		      dclare.runSelenium("SharedLib")
 		    }
 		}
