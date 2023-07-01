@@ -1,0 +1,44 @@
+@Library('Mylibrary')_
+pipeline{
+	agent any
+	stages{
+	  stage('ContiniousDownload_Master'){
+		steps{
+		    script{
+		      dclare.newGit("maven")
+		    }
+		}
+	    }
+	    
+	    stage('Continiousbuild_Master'){
+		steps{
+		    script{
+		      dclare.newMaven()
+		    }
+		}
+	    }
+	     stage('Continioudeploy_Master'){
+		steps{
+		    script{
+		      dclare.newDeploy("SharedLib","172.31.82.1","testapp")
+		    }
+		}
+	    }
+	     stage('ContiniousTesting_Master'){
+		steps{
+		    script{
+		        dclare.newGit("FunctionalTesting_Master")
+		      dclare.runSelenium("SharedLib")
+		    }
+		}
+	    }
+	    stage('Continioudelivery_Master'){
+		steps{
+		    script{
+		      dclare.newDeploy("SharedLib","172.31.95.221","prodapp")
+		    }
+		}
+	    }
+	   
+	}
+    } 
